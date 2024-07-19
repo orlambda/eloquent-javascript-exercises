@@ -10,8 +10,13 @@ function reverseArray (inputArray) {
 
 // modify the given array
 function reverseArrayInPlace (array) {
-    const buffer = reverseArray(array);
-    for (let i = 0; i < array.length; i++) {
-        array[i] = buffer[i];
+    // for odd-lengthed arrays, the middle element doesn't need to be swapped
+    let length = array.length;
+    let max = Math.floor(length / 2);
+    for (let i = 0; i < max; i++) {
+        let buffer = array[i];
+        array[i] = array[length - i - 1];
+        array[length - i - 1] = buffer;
     }
+    return array;
 }
